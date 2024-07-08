@@ -1,0 +1,20 @@
+python run.py 
+    --seed 5
+    --dataset sst2 
+    --task cls 
+    --batch-size 32 
+    --prompt-num 0 
+    --sample_num 500 
+    --language_model gpt 
+    --budget 10 
+    --popsize 10 
+    --position demon 
+    --evo_mode ga 
+    --llm_type turbo 
+    --setting default 
+    --initial all 
+    --initial_mode para_topk 
+    --ga_mode topk
+    --cache_path data/cls/sst2/seed5/prompts_batched.json 
+    --output outputs/cls/sst2/alpaca/all/ga/bd10_top10_para_topk_init/topk/turbo/seed5
+    --dev_file ./data/cls/sst2/seed5/dev.txt

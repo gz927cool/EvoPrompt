@@ -133,3 +133,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+mosestokenizer-1.2.1
+*.tar.gz

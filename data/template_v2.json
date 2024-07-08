@@ -71,6 +71,10 @@
                 ]
             },
             "gpt": {
+                "sst2": [
+                    "Input: <input>\nOutput: <output>",
+                    "Input: one of the year 's best films , featuring an oscar-worthy performance by julianne moore .\nOutput: positive\n\nInput: it 's just merely very bad .\nOutput: negative\n\nInput: <input>\nOutput: "
+                ],
                 "sst-5": [
                     "Sentence: <input>\nLabel: <output>",
                     "Sentence: the heavy-handed film is almost laughable as a consequence .\nLabel: terrible\n\nSentence: movie fans , get ready to take off ... the other direction .\nLabel: bad\n\nSentence: a movie that hovers somewhere between an acute character study and a trite power struggle .\nLabel: okay\n\nSentence: escaping the studio , piccoli is warmly affecting and so is this adroitly minimalist movie .\nLabel: good\n\nSentence: seldom has a movie so closely matched the spirit of a man and his work .\nLabel: great\n\nSentence: <input>\nLabel: "

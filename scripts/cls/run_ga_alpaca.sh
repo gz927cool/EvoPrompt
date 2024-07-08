@@ -23,7 +23,7 @@ python run.py \
     --batch-size 32 \
     --prompt-num 0 \
     --sample_num 500 \
-    --language_model alpaca \
+    --language_model gpt \
     --budget $BUDGET \
     --popsize $POPSIZE \
     --position demon \

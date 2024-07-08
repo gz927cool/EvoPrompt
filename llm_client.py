@@ -55,7 +55,7 @@ def llm_init(auth_file="../auth.yaml", llm_type='davinci', setting="default"):
         openai.api_version = auth["api_version"]
     except:
         pass
-    openai.api_key = auth["api_key"]
+    # openai.api_key = auth["api_key"]
     return auth
 
 
@@ -73,7 +73,7 @@ def llm_query(data, client, type, task, **config):
                 # print(request_data)
                 while True:
                     try:
-                        response = openai.Completion.create(**request_data)
+                        response = client.chat.completions.create(**request_data)
                         response = response["choices"]
                         response = [r["text"] for r in response]
                         break
@@ -89,8 +89,9 @@ def llm_query(data, client, type, task, **config):
                     request_data = form_request(data, type, **config)
                     while True:
                         try:
-                            result = openai.ChatCompletion.create(**request_data)
-                            result = result["choices"][0]["message"]["content"]
+                            result = client.chat.completions.create(**request_data)
+                            # result = result["choices"][0]["message"]["content"]
+                            result = result.choices[0].message.content
                             # print(result)
                             response.append(result)
                             break
@@ -118,12 +119,13 @@ def llm_query(data, client, type, task, **config):
                 result = ""
                 if "turbo" in type or 'gpt4' in type:
                     request_data = form_request(data, type, **config)
-                    response = openai.ChatCompletion.create(**request_data)
-                    result = response["choices"][0]["message"]["content"]
+                    response = client.chat.completions.create(**request_data)
+                    # result = response["choices"][0]["message"]["content"]
+                    result = response.choices[0].message.content
                     break
                 else:
                     request_data = form_request(data, type=type, **config)
-                    response = openai.Completion.create(**request_data)["choices"][ 0 ]["text"]
+                    response = client.chat.completions.create(**request_data)["choices"][ 0 ]["text"]
                     result = response.strip()
             except Exception as e:
                 error = str(e)

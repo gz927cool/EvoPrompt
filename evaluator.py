@@ -21,6 +21,7 @@ from utils import *
 from dataset import TextDataset
 from llm_client import *
 from metrics import *
+from openai import OpenAI
 
 class Evaluator(object):
     def __init__(self, args) -> None:
@@ -28,7 +29,7 @@ class Evaluator(object):
         self.dataset = args.dataset
         template_file = "./data/template_v2.json"
         
-        templates = json.load(open(template_file, "r"))
+        templates = json.load(open(template_file, "r",encoding='utf8'))
         if "alpaca" in args.language_model:
             model = "alpaca"
         elif "gpt" in args.language_model:
@@ -52,7 +53,7 @@ class Evaluator(object):
         if "gpt" in args.language_model:
             self.tokenizer = None
             self.model = None
-
+            self.client = OpenAI(api_key="sk-47McvMrxMAS5pU9w56De3b3bB8C944EdA3EdDeE030F9997b",base_url='https://api.gptapi.us/v1/')
         elif "alpaca" in args.language_model:
             self.tokenizer = LlamaTokenizer.from_pretrained(
                 'chavinlo/alpaca-native',
